@@ -11,7 +11,20 @@ public class DemoController {
 
     @GetMapping("/hello")
     public String hello(Principal principal) {
-        return "Hallo, " + principal.getName() ;
+        String result;
+        if (principal == null) {
+            result = "principal==null";
+        }
+        else {
+            String name = principal.getName();
+            if (name == null) {
+                result = "principal.Name==null";
+            }
+            else {
+                result = "principal.Name==\"" + principal.getName() + "\"";
+            }
+        }
+        return result;
     }
 
     @GetMapping("/public")
